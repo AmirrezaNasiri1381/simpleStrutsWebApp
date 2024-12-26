@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+    <form-beans>
+        <form-bean name="myLoginForm" type="com.example.com.webapp.forms.LoginForm"/>
+        <form-bean name="myRegisterForm" type="com.example.com.webapp.forms.RegisterForm"/>
+        <form-bean name="myWelcomeForm" type="com.example.com.webapp.forms.WelcomeForm"/>
+        <form-bean name="myShopForm" type="com.example.com.webapp.forms.ShopForm"/>
+    </form-beans>
+
+    <action-mappings>
+        <action path="/Login" type="com.example.com.webapp.action.LoginAction"
+                scope="session" parameter="tag"   validate="false"
+                name="myLoginForm">
+            <forward name="show" path="/Login.jsp"/>
+            <forward name="welcomePage" path="/Welcome.jsp"/>
+            <forward name="register" path="/Register.jsp"/>
+        </action>
+        <action path="/Welcome" type="com.example.com.webapp.action.WelcomeAction"
+                scope="session" parameter="method"   validate="false"
+                name="myWelcomeForm">
+            <forward name="welcome" path="/Welcome.jsp"/>
+        </action>
+        <action path="/Register" type="com.example.com.webapp.action.RegisterAction"
+                scope="session" parameter="method"   validate="false"
+                name="myRegisterForm">
+            <forward name="register" path="/Register.jsp"/>
+            <forward name="LoginPage" path="/Login.jsp"/>
+        </action>
+        <action path="/Shop" type="com.example.com.webapp.action.ShopAction"
+                scope="session" parameter="method"   validate="false"
+                name="myShopForm">
+            <forward name="Show" path="/Shop.jsp"/>
+            <forward name="Shop" path="/ShowOreder.jsp"/>
+        </action>
+    </action-mappings>
+    <message-resources parameter="messages" key="myMessages" />
+
+</struts-config>
+
